@@ -1,0 +1,48 @@
+body{
+    background-color: #bda464;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+h1{
+    color: blue;
+    
+}
+li{
+    color: #0000FF;
+}
+p{
+    background-color: orange;
+}
+h3{
+    border: red 5px solid; 
+}
+abbr{
+    font-weight: bold; text-decoration: underline;
+}
+.explanation{
+    color: red;
+}
+#zen-benefits p{
+    background-color: pink;
+}
+li + h2{
+    background-color: red;
+}
+p em{
+    color: red ;
+    font-weight: bold;
+}
+a:visited{
+    color: green;
+}
+@keyframes example {
+    0%   {background-color: red;}
+    25%  {background-color: yellow;}
+    50%  {background-color: blue;}
+    100% {background-color: green;}
+  }
+h1{
+    width: 200px;
+    background-color: red;
+    animation-name: example;
+    animation-duration: 20s;
+}

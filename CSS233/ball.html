@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>football</title>
+    <style>
+        table,th,td{
+            text-align: center;
+            border: transparent;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.466);
+            border-collapse: collapse;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        tr:hover{
+            background-color: rgb(214, 214, 214);
+            transition: 0.3s;
+        }
+        .team{
+            padding-right: 200px;
+            text-align: left;
+            padding-left: 16px;
+        }
+        .sign{
+            text-align: center;
+        }
+        .head{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th style="width: 0.5%;"></th>
+            <th>สโมสร</th>
+            <th></th>
+            <th></th>
+            <th class="head">แข่ง</th>
+            <th class="head">ชนะ</th>
+            <th class="head">เสมอ</th>
+            <th class="head">แพ้</th>
+            <th class="head">ได้</th>
+            <th class="head">เสีย</th>
+            <th class="head">ต่าง</th>
+            <th class="head">แต้ม</th>
+            <th colspan="5">5 นัดล่าสุด</th>
+        </tr>
+        <tr>
+            <td style="background-color: blue;" class="bluered"></td>
+            <td>1</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/hif/f/ff/Manchester_United_FC_crest.png" width="30"></td>
+            <td class="team">Man Unite</td>
+            <td>19</td>
+            <td>16</td>
+            <td>2</td>
+            <td>1</td>
+            <td>45</td>
+            <td>16</td>
+            <td>29</td>
+            <td>50</td>
+            <td colspan="5" class="sign">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: blue;" class="bluered"></td>
+            <td>2</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg" width="30"></td>
+            <td class="team">Arsenal</td>
+            <td>20</td>
+            <td>14</td>
+            <td>2</td>
+            <td>4</td>
+            <td>53</td>
+            <td>33</td>
+            <td>45</td>
+            <td>45</td>
+            <td colspan="5" class="sign">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: blue;" class="bluered"></td>
+            <td>3</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/800px-Manchester_City_FC_badge.svg.png" width="30"></td>
+            <td class="team">Manchester City</td>
+            <td>19</td>
+            <td>10</td>
+            <td>9</td>
+            <td>1</td>
+            <td>33</td>
+            <td>11</td>
+            <td>22</td>
+            <td>39</td>
+            <td colspan="5" class="sign">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: blue;" class="bluered"></td>
+            <td>4</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e5/AFC_Bournemouth_%282013%29.svg/640px-AFC_Bournemouth_%282013%29.svg.png" width="25"></td>
+            <td class="team">Bournemouth</td>
+            <td>19</td>
+            <td>9</td>
+            <td>4</td>
+            <td>6</td>
+            <td>37</td>
+            <td>27</td>
+            <td>10</td>
+            <td>31</td>
+            <td colspan="5" class="sign">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: red;" class="bluered"></td>
+            <td>5</td>
+            <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrIbm_0tHQs_haHnk8i7XWqonIYUlaIpbt5g&s" width="26"></td>
+            <td class="team">Aston Villa</td>
+            <td>21</td>
+            <td>9</td>
+            <td>4</td>
+            <td>8</td>
+            <td>32</td>
+            <td>30</td>
+            <td>2</td>
+            <td>31</td>
+            <td colspan="5" class="sign">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>6</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2a/Brentford_FC_crest.svg/1200px-Brentford_FC_crest.svg.png" width="30"></td>
+            <td class="team">Brentford</td>
+            <td>20</td>
+            <td>7</td>
+            <td>9</td>
+            <td>4</td>
+            <td>32</td>
+            <td>28</td>
+            <td>4</td>
+            <td>30</td>
+            <td colspan="5" class="sign">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>7</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d0/Brighton_and_Hove_Albion_FC_crest.svg/800px-Brighton_and_Hove_Albion_FC_crest.svg.png" width="30"></td>
+            <td class="team">Brighton</td>
+            <td>19</td>
+            <td>9</td>
+            <td>4</td>
+            <td>6</td>
+            <td>43</td>
+            <td>27</td>
+            <td>5</td>
+            <td>24</td>
+            <td colspan="5" class="sign">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>8</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Chelsea_FC.svg/640px-Chelsea_FC.svg.png" width="30"></td>
+            <td class="team">Chelsea</td>
+            <td>19</td>
+            <td>6</td>
+            <td>8</td>
+            <td>4</td>
+            <td>34</td>
+            <td>34</td>
+            <td>6</td>
+            <td>45</td>
+            <td colspan="5" class="sign">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>9</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/Crystal_Palace_FC_logo_%282022%29.svg/800px-Crystal_Palace_FC_logo_%282022%29.svg.png" width="30"></td>
+            <td class="team">Crystal Palace</td>
+            <td>21</td>
+            <td>7</td>
+            <td>4</td>
+            <td>5</td>
+            <td>34</td>
+            <td>23</td>
+            <td>4</td>
+            <td>43</td>
+            <td colspan="5" class="sign">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>10</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7c/Everton_FC_logo.svg/640px-Everton_FC_logo.svg.png" width="30"></td>
+            <td class="team">Everton</td>
+            <td>21</td>
+            <td>7</td>
+            <td>3</td>
+            <td>3</td>
+            <td>43</td>
+            <td>23</td>
+            <td>6</td>
+            <td>43</td>
+            <td colspan="5" class="sign">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>11</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Fulham_FC_%28shield%29.svg/800px-Fulham_FC_%28shield%29.svg.png" width="27"></td>
+            <td class="team">Fulham</td>
+            <td>22</td>
+            <td>6</td>
+            <td>2</td>
+            <td>5</td>
+            <td>35</td>
+            <td>31</td>
+            <td>7</td>
+            <td>34</td>
+            <td colspan="5" class="sign">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>12</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/43/Ipswich_Town.svg/640px-Ipswich_Town.svg.png" width="30"></td>
+            <td class="team">Ipswich Town</td>
+            <td>19</td>
+            <td>4</td>
+            <td>2</td>
+            <td>2</td>
+            <td>-23</td>
+            <td>23</td>
+            <td>4</td>
+            <td>23</td>
+            <td colspan="5" class="sign">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>13</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/2d/Leicester_City_crest.svg/800px-Leicester_City_crest.svg.png" width="30"></td>
+            <td class="team">Leicester City</td>
+            <td>22</td>
+            <td>4</td>
+            <td>18</td>
+            <td>3</td>
+            <td>32</td>
+            <td>32</td>
+            <td>5</td>
+            <td>32</td>
+            <td colspan="5" class="sign">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>14</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Liverpool_FC.svg/640px-Liverpool_FC.svg.png" width="30"></td>
+            <td class="team">Liverpool</td>
+            <td>19</td>
+            <td>2</td>
+            <td>17</td>
+            <td>4</td>
+            <td>3</td>
+            <td>33</td>
+            <td>2</td>
+            <td>32</td>
+            <td colspan="5" class="sign">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>15</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Newcastle_United_Logo.svg/1200px-Newcastle_United_Logo.svg.png" width="30"></td>
+            <td class="team">Newcastle</td>
+            <td>20</td>
+            <td>5</td>
+            <td>5</td>
+            <td>10</td>
+            <td>30</td>
+            <td>21</td>
+            <td>5</td>
+            <td>21</td>
+            <td colspan="5" class="sign">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>16</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e5/Nottingham_Forest_F.C._logo.svg/1200px-Nottingham_Forest_F.C._logo.svg.png" width="25"" width="30"></td>
+            <td class="team">Nottm Forest</td>
+            <td>21</td>
+            <td>4</td>
+            <td>16</td>
+            <td>1</td>
+            <td>34</td>
+            <td>21</td>
+            <td>3</td>
+            <td>36</td>
+            <td colspan="5" class="sign">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>17</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/FC_Southampton.svg/640px-FC_Southampton.svg.png" width="30"></td>
+            <td class="team">Southampton</td>
+            <td>21</td>
+            <td>3</td>
+            <td>18</td>
+            <td>1</td>
+            <td>32</td>
+            <td>12</td>
+            <td>-9</td>
+            <td>26</td>
+            <td colspan="5" class="sign">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: red;" class="bluered"></td>
+            <td>18</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b4/Tottenham_Hotspur.svg/800px-Tottenham_Hotspur.svg.png"width="20"></td>
+            <td class="team">Tottenham</td>
+            <td>21</td>
+            <td>2</td>
+            <td>19</td>
+            <td>0</td>
+            <td>32</td>
+            <td>32</td>
+            <td>-18</td>
+            <td>15</td>
+            <td colspan="5" class="sign">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: red;" class="bluered"></td>
+            <td>19</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/West_Ham_United_FC_logo.svg/640px-West_Ham_United_FC_logo.svg.png" width="30"></td>
+            <td class="team">West Ham</td>
+            <td>22</td>
+            <td>2</td>
+            <td>17</td>
+            <td>3</td>
+            <td>34</td>
+            <td>21</td>
+            <td>-18</td>
+            <td>15</td>
+            <td colspan="5" class="sign">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107046.png" width="17">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: red;" class="bluered"></td>
+            <td>20</td>
+            <td><img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/Wolverhampton_Wanderers_FC_crest.svg/1200px-Wolverhampton_Wanderers_FC_crest.svg.png" width="30"></td>
+            <td class="team">Wolves</td>
+            <td>21</td>
+            <td>2</td>
+            <td>4</td>
+            <td>3</td>
+            <td>13</td>
+            <td>17</td>
+            <td>-20</td>
+            <td>15</td>
+            <td colspan="5" class="sign">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eo_circle_green_white_checkmark.svg/480px-Eo_circle_green_white_checkmark.svg.png" width="18">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+                <img src="https://www.shareicon.net/data/512x512/2015/09/15/101562_incorrect_512x512.png" width="17.5">
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
