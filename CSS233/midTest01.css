@@ -1,0 +1,96 @@
+body{
+    background-image: linear-gradient(to right,rgb(94, 94, 247),rgb(252, 87, 87));
+    padding: 20px;
+}
+.container{
+    position:relative;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    padding: 50px;
+    height: 630px;
+    width: 1550px;
+}
+.p1{
+    width: 360px;
+    font-size: 20px;
+}
+.p2{
+    display: flex;
+    justify-content: space-around;
+}
+.box1, .box2, .box3, .box4{
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    width: 350px;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    font-size: 25px;
+    transition: transform 0.3s;
+}
+p{
+    margin-top: 0px;
+}
+h1,h2,h3{
+    font-size: 40px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-weight: 100;
+}
+h1{
+    font-size: 50px;
+}
+.icon{
+    width: 60px;
+    margin-bottom: 0px;
+}
+.ironman1, .ironman2, .ironman3{
+    width: 400px;
+    position: absolute;
+}
+.ironman1{
+    top: 20px;
+    left: 650px;
+    z-index: 1;
+}
+.ironman2{
+    top:60px;
+    left:1000px;
+    z-index: 2;
+}
+.ironman3{
+    top:130px;
+    left: 800px;
+    z-index: 3;
+}
+
+.box1:hover{
+    transform: scale(1.2);
+}
+.box2:hover{
+    transform: scale(1.2);
+}
+.box3:hover{
+    transform: scale(1.2);
+}
+.box4:hover{
+    transform: scale(1.2);
+}
+
+.ironman1:hover{
+    transform: scale(1.1);
+    z-index: 100;
+    border: 5px solid rgb(253, 135, 135);
+}
+.ironman2:hover{
+    transform: scale(1.1);
+    z-index: 100;
+    border: 5px solid rgb(253, 135, 135);
+}
+.ironman3:hover{
+    transform: scale(1.1);
+    z-index: 100;
+    border: 5px solid rgb(253, 135, 135);
+}

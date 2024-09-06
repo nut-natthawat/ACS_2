@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/ACS/ACS_2/ACS_2/CSS223",
-      "program": "c:/ACS/ACS_2/ACS_2/CSS223/build/Debug/outDebug",
+      "cwd": "c:/ACS/ACS_2/ACS_2/CSS233",
+      "program": "c:/ACS/ACS_2/ACS_2/CSS233/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
