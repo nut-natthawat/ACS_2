@@ -4,12 +4,10 @@ body{
 }
 .container{
     position:relative;
-    flex-direction: column;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 15px;
+    width:95%;
     padding: 50px;
-    height: 630px;
-    width: 1550px;
 }
 .p1{
     width: 360px;
@@ -29,6 +27,7 @@ body{
     padding: 10px;
     font-size: 25px;
     transition: transform 0.3s;
+    margin:10;
 }
 p{
     margin-top: 0px;
@@ -52,44 +51,24 @@ h1{
 }
 .ironman1{
     top: 20px;
-    left: 650px;
+    left: 40%;
     z-index: 1;
 }
 .ironman2{
     top:60px;
-    left:1000px;
+    left:60%;
     z-index: 2;
 }
 .ironman3{
     top:130px;
-    left: 800px;
+    left: 50%;
     z-index: 3;
 }
 
-.box1:hover{
+.box1:hover, .box2:hover, .box3:hover, .box4:hover{
     transform: scale(1.2);
 }
-.box2:hover{
-    transform: scale(1.2);
-}
-.box3:hover{
-    transform: scale(1.2);
-}
-.box4:hover{
-    transform: scale(1.2);
-}
-
-.ironman1:hover{
-    transform: scale(1.1);
-    z-index: 100;
-    border: 5px solid rgb(253, 135, 135);
-}
-.ironman2:hover{
-    transform: scale(1.1);
-    z-index: 100;
-    border: 5px solid rgb(253, 135, 135);
-}
-.ironman3:hover{
+.ironman1:hover, .ironman2:hover, .ironman3:hover{
     transform: scale(1.1);
     z-index: 100;
     border: 5px solid rgb(253, 135, 135);
