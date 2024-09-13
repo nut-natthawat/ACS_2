@@ -48,6 +48,7 @@ h1{
 .ironman1, .ironman2, .ironman3{
     width: 400px;
     position: absolute;
+    border-radius: 5PX;
 }
 .ironman1{
     top: 20px;
