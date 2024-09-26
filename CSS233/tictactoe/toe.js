@@ -1,11 +1,8 @@
-const cells = document.querySelectorAll('.cell');
-const message = document.getElementById('message');
-const resetButton = document.getElementById('reset');
-let board = ['', '', '', '', '', '', '', '', ''];
-let currentPlayer = ''; // ผู้เล่นปัจจุบัน
-let gameActive = true;
+const cells = document.querySelectorAll(".cell");
+const statustext = document.querySelector("#statustext");
+const resetbtn = document.querySelector("#resetbtn");
 
-const winPatterns = [
+const patterns = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -15,98 +12,90 @@ const winPatterns = [
     [0, 4, 8],
     [2, 4, 6]
 ];
+let option = ["","","","","","","","",""];
+let currentPlayer = "X";
+let running = false;
 
-// Event listeners
-resetButton.addEventListener('click', resetGame);
-cells.forEach(cell => cell.addEventListener('click', handleCellClick));
+initializegame();
 
-function startGame() {
-    // สุ่มผู้เล่นเริ่มต้น
-    currentPlayer = Math.random() < 0.5 ? 'X' : 'O';
-    message.textContent = `${currentPlayer}'s turn`;
-
-    if (currentPlayer === 'O') {
-        setTimeout(computerPlay, 500); // ถ้าคอมพิวเตอร์เริ่มก่อน
-    }
+function initializegame(){
+    cells.forEach(cell => cell.addEventListener("click", cellclick));
+    resetbtn.addEventListener("click", reset);
+    statustext.textContent = `${currentPlayer} turn`;
+    running = true;
 }
 
-function handleCellClick(e) {
-    const cell = e.target;
-    const index = cell.getAttribute('data-index');
-
-    if (board[index] !== '' || !gameActive || currentPlayer !== 'X') {
+function cellclick(){
+    const cellindex = this.getAttribute("cellindex");
+    if(option[cellindex] != "" || !running || currentPlayer !== "X"){
         return;
     }
-
-    board[index] = 'X';
-    cell.textContent = 'X';
-
+    update(this, cellindex);
     checkWinner();
-    if (gameActive) {
-        switchPlayer();
-        if (currentPlayer === 'O') {
-            setTimeout(computerPlay, 500); // ให้คอมพิวเตอร์เล่น
-        }
+    if(running){
+        setTimeout(computerMove, 500);
     }
 }
 
-function checkWinner() {
+function update(cell, index){
+    option[index] = currentPlayer;
+    cell.textContent = currentPlayer;
+}
+
+function changeplayer(){
+    currentPlayer = (currentPlayer == "X") ? "O" : "X";
+    statustext.textContent = `${currentPlayer} turn`;
+}
+
+function checkWinner(){
     let roundWon = false;
-    for (let i = 0; i < winPatterns.length; i++) {
-        const [a, b, c] = winPatterns[i];
-        if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+    for(let i = 0 ;i < patterns.length ; i++){
+        const condition = patterns[i];
+        const cella = option[condition[0]];
+        const cellb = option[condition[1]];
+        const cellc = option[condition[2]];
+        if(cella == "" || cellb == "" || cellc == ""){
+            continue;
+        }
+        if(cella == cellb && cellb == cellc){
             roundWon = true;
             break;
         }
     }
-
-    if (roundWon) {
-        message.textContent = `${currentPlayer} wins!`;
-        gameActive = false;
-        return;
+    if(roundWon){
+        statustext.textContent = `${currentPlayer} Wins!`;
+        running = false;
     }
-
-    if (!board.includes('')) {
-        message.textContent = "It's a draw!";
-        gameActive = false;
-        return;
+    else if(!option.includes("")){
+        statustext.textContent = 'Draw!';
+        running = false;
+    }
+    else{
+        changeplayer();
     }
 }
 
-function switchPlayer() {
-    currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-    message.textContent = `${currentPlayer}'s turn`;
-}
-
-function computerPlay() {
-    let availableCells = [];
-    board.forEach((cell, index) => {
-        if (cell === '') {
-            availableCells.push(index);
+function computerMove(){
+    if (currentPlayer === "O") {
+        let emptyCells = [];
+        option.forEach((cell, index) => {
+            if (cell === "") {
+                emptyCells.push(index);
+            }
+        });
+        if (emptyCells.length > 0) {
+            const randomIndex = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+            const cell = document.querySelector(`[cellindex="${randomIndex}"]`);
+            update(cell, randomIndex);
+            checkWinner();
         }
-    });
-
-    const randomIndex = availableCells[Math.floor(Math.random() * availableCells.length)];
-    board[randomIndex] = 'O';
-
-    const cellElement = document.querySelector(`.cell[data-index="${randomIndex}"]`);
-    cellElement.textContent = 'O';
-
-    checkWinner();
-    if (gameActive) {
-        switchPlayer();
     }
 }
 
-function resetGame() {
-    board.fill('');
-    cells.forEach(cell => (cell.textContent = ''));
-    gameActive = true;
-    message.textContent = `Game reset.`;
-
-    // เริ่มเกมใหม่
-    startGame();
+function reset(){
+    currentPlayer = "X";
+    option = ["","","","","","","","",""];
+    statustext.textContent = `${currentPlayer} turn`;
+    cells.forEach(cell => cell.textContent = "");
+    running = true;
 }
-
-// เริ่มเกมเมื่อโหลดหน้า
-startGame();

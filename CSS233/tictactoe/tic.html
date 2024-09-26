@@ -3,27 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="tac.css">
+    <title>Document</title>
+    <link href="Tac.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Tic Tac Toe</h1>
-
-    <div class="board" id="board">
-        <div class="cell" data-index="0"></div>
-        <div class="cell" data-index="1"></div>
-        <div class="cell" data-index="2"></div>
-        <div class="cell" data-index="3"></div>
-        <div class="cell" data-index="4"></div>
-        <div class="cell" data-index="5"></div>
-        <div class="cell" data-index="6"></div>
-        <div class="cell" data-index="7"></div>
-        <div class="cell" data-index="8"></div>
+    <div id="gamecontainer">
+        <h1>Tic Tac Toe</h1>
+        <div id="cellcontainer">
+            <div cellindex="0" class="cell"></div>
+            <div cellindex="1" class="cell"></div>
+            <div cellindex="2" class="cell"></div>
+            <div cellindex="3" class="cell"></div>
+            <div cellindex="4" class="cell"></div>
+            <div cellindex="5" class="cell"></div>
+            <div cellindex="6" class="cell"></div>
+            <div cellindex="7" class="cell"></div>
+            <div cellindex="8" class="cell"></div>
+        </div>
+        <h2 id="statustext"></h2>
+        <button id="resetbtn">Reset</button>
     </div>
-
-    <button id="reset">Reset Game</button>
-    <p id="message"></p>
-
-    <script src="toe.js"></script>
+    <script src="Toe.js"></script>
 </body>
 </html>
