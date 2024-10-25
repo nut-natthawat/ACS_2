@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortest Remaining Job First (SRJF) Scheduling</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        input { margin: 5px; padding: 5px; }
+        .gantt { display: flex; gap: 5px; margin-top: 10px; }
+        .box { padding: 10px; background-color: #4CAF50; color: white; text-align: center; }
+        .idle { background-color: #aaa; }
+        .process-info { margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <h1>SRJF Scheduling Simulator</h1>
+    <label>Number of Processes:</label>
+    <input type="number" id="numProcesses" min="1" max="10" value="4"><br>
+    <label>Max Arrival Time:</label>
+    <input type="number" id="maxArrivalTime" min="1" max="20" value="10"><br>
+    <label>Max Burst Time:</label>
+    <input type="number" id="maxBurstTime" min="1" max="20" value="10"><br>
+    <button onclick="runSRJF()">Run Simulation</button>
+
+    <h2>Gantt Chart</h2>
+    <div id="ganttChart" class="gantt"></div>
+
+    <h2>Process Information</h2>
+    <div id="processInfo" class="process-info"></div>
+
+    <script>
+        function generateRandomProcesses(numProcesses, maxArrivalTime, maxBurstTime) {
+            const processes = [];
+            for (let i = 0; i < numProcesses; i++) {
+                processes.push({
+                    arrivalTime: Math.floor(Math.random() * (maxArrivalTime + 1)),
+                    burstTime: Math.floor(Math.random() * maxBurstTime) + 1,
+                    id: i + 1
+                });
+            }
+            return processes;
+        }
+
+        function shortestRemainingJobFirst(processes) {
+            const n = processes.length;
+            const remainingTimes = processes.map(p => p.burstTime);
+            const ganttChart = [];
+            const waitingTimes = Array(n).fill(0);
+            const turnaroundTimes = Array(n).fill(0);
+            let complete = 0, time = 0, minTime = Infinity, shortest = 0, check = false;
+
+            while (complete !== n) {
+                for (let i = 0; i < n; i++) {
+                    if (processes[i].arrivalTime <= time && remainingTimes[i] < minTime && remainingTimes[i] > 0) {
+                        minTime = remainingTimes[i];
+                        shortest = i;
+                        check = true;
+                    }
+                }
+
+                if (!check) {
+                    ganttChart.push("Idle");
+                    time++;
+                    continue;
+                }
+
+                ganttChart.push(`P${processes[shortest].id}`);
+                remainingTimes[shortest]--;
+                minTime = remainingTimes[shortest];
+
+                if (minTime === 0) minTime = Infinity;
+
+                if (remainingTimes[shortest] === 0) {
+                    complete++;
+                    check = false;
+                    const finishTime = time + 1;
+                    waitingTimes[shortest] = finishTime - processes[shortest].burstTime - processes[shortest].arrivalTime;
+                    turnaroundTimes[shortest] = finishTime - processes[shortest].arrivalTime;
+                    if (waitingTimes[shortest] < 0) waitingTimes[shortest] = 0;
+                }
+
+                time++;
+            }
+
+            return { ganttChart, processes, waitingTimes, turnaroundTimes };
+        }
+
+        function displayResults({ ganttChart, processes, waitingTimes, turnaroundTimes }) {
+            const ganttDiv = document.getElementById("ganttChart");
+            const processInfoDiv = document.getElementById("processInfo");
+            ganttDiv.innerHTML = "";
+            processInfoDiv.innerHTML = "";
+
+            ganttChart.forEach((p, i) => {
+                const box = document.createElement("div");
+                box.className = "box" + (p === "Idle" ? " idle" : "");
+                box.innerText = p;
+                ganttDiv.appendChild(box);
+            });
+
+            let processInfoHTML = `<table border="1"><tr><th>Process</th><th>Arrival Time</th><th>Burst Time</th><th>Waiting Time</th><th>Turnaround Time</th></tr>`;
+            processes.forEach((p, i) => {
+                processInfoHTML += `<tr>
+                    <td>P${p.id}</td>
+                    <td>${p.arrivalTime}</td>
+                    <td>${p.burstTime}</td>
+                    <td>${waitingTimes[i]}</td>
+                    <td>${turnaroundTimes[i]}</td>
+                </tr>`;
+            });
+            processInfoHTML += "</table>";
+            processInfoDiv.innerHTML = processInfoHTML;
+        }
+
+        function runSRJF() {
+            const numProcesses = parseInt(document.getElementById("numProcesses").value);
+            const maxArrivalTime = parseInt(document.getElementById("maxArrivalTime").value);
+            const maxBurstTime = parseInt(document.getElementById("maxBurstTime").value);
+            const processes = generateRandomProcesses(numProcesses, maxArrivalTime, maxBurstTime);
+            const results = shortestRemainingJobFirst(processes);
+            displayResults(results);
+        }
+    </script>
+
+</body>
+</html>

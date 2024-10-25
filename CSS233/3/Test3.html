@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Test 3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <h1>Sorting Name</h1>
+    <strong>ใส่ชื่อ โดยจะเรียงชื่อในกล่องข้อความด้านล่าง</strong>
+    <form>
+      <label>Name :</label>
+      <input type="text">
+      <button>Add</button>
+      <div id="textlist"></div>
+    </form>
+    <h3>ชื่อที่เรียงแล้ว</h3>
+    <ul>
+
+
+
+    </ul>
+
+
+    <script>
+      const txt1 = document.querySelector("input");
+      const btr = document.querySelector("button");
+      const listt = document.querySelector("ul");
+      
+      btr.addEventListener('click', () => {
+          const inputValue = txt1.value;
+          listt.insertAdjacentElement("beforeend", `<li>${inputValue}<li>`);
+      })
+
+    </script>
+</body>
+
+</html>
