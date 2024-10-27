@@ -1,6 +1,125 @@
 import random
 from collections import deque
 
+def first_come_first_serve(processes):
+    processes = [proc.copy() for proc in processes]
+    n = len(processes)
+    processes.sort(key=lambda x: x['arrival_time'])
+    waiting_time = [0] * n
+    turnaround_time = [0] * n
+    gantt_chart = []
+    completed_time = 0
+
+    for i in range(n):
+        process = processes[i]
+        if completed_time < process['arrival_time']:
+            gantt_chart.append("Idle")
+            completed_time = process['arrival_time']
+        
+        waiting_time[i] = max(0, completed_time - process['arrival_time'])
+        turnaround_time[i] = waiting_time[i] + process['burst_time']
+        completed_time += process['burst_time']
+        gantt_chart.append(f"P{process['id']}")
+
+    avg_waiting_time = sum(waiting_time) / n
+    avg_turnaround_time = sum(turnaround_time) / n
+
+    print("\nFirst Come First Serve (FCFS) Scheduling")
+    print(f"{'Process':<10}{'Arrival Time':<15}{'Burst Time':<15}{'Waiting Time':<15}{'Turnaround Time':<15}")
+    for i, process in enumerate(processes):
+        print(f"{process['id']:<10}{process['arrival_time']:<15}{process['burst_time']:<15}{waiting_time[i]:<15}{turnaround_time[i]:<15}")
+
+    print(f"\nAverage Waiting Time: {avg_waiting_time}")
+    print(f"Average Turnaround Time: {avg_turnaround_time}")
+    print("\nGantt Chart:")
+    print(" | ".join(gantt_chart))
+
+def round_robin(processes, time_quantum):
+    processes = [proc.copy() for proc in processes]
+    n = len(processes)
+    queue = deque(processes)
+    completed_time = 0
+    gantt_chart = []
+    waiting_time = {proc['id']: 0 for proc in processes}
+    turnaround_time = {proc['id']: 0 for proc in processes}
+    original_burst_times = {proc['id']: proc['burst_time'] for proc in processes}
+    
+    while queue:
+        process = queue.popleft()
+        
+        if completed_time < process['arrival_time']:
+            gantt_chart.append("Idle")
+            completed_time = process['arrival_time']
+        
+        actual_burst = min(time_quantum, process['burst_time'])
+        gantt_chart.append(f"P{process['id']}")
+        process['burst_time'] -= actual_burst
+        completed_time += actual_burst
+
+        if process['burst_time'] > 0:
+            queue.append(process)
+        else:
+            turnaround_time[process['id']] = completed_time - process['arrival_time']
+            waiting_time[process['id']] = turnaround_time[process['id']] - original_burst_times[process['id']]
+
+    avg_waiting_time = sum(waiting_time.values()) / n
+    avg_turnaround_time = sum(turnaround_time.values()) / n
+
+    print("\nRound Robin (RR) Scheduling")
+    print(f"{'Process':<10}{'Waiting Time':<15}{'Turnaround Time':<15}")
+    for proc in processes:
+        print(f"{proc['id']:<10}{waiting_time[proc['id']]:<15}{turnaround_time[proc['id']]:<15}")
+
+    print(f"\nAverage Waiting Time: {avg_waiting_time}")
+    print(f"Average Turnaround Time: {avg_turnaround_time}")
+    print("\nGantt Chart:")
+    print(" | ".join(gantt_chart))
+
+def shortest_job_first(processes):
+    processes = [proc.copy() for proc in processes]
+    n = len(processes)
+    processes.sort(key=lambda x: x['arrival_time'])
+    waiting_time = [0] * n
+    turnaround_time = [0] * n
+    gantt_chart = []
+    completed_time = 0
+    completed_processes = []
+
+    while len(completed_processes) < n:
+        arrived_processes = [p for p in processes if p['arrival_time'] <= completed_time and p not in completed_processes]
+        
+        if not arrived_processes:
+            gantt_chart.append("Idle")
+            completed_time += 1
+            continue
+
+        arrived_processes.sort(key=lambda x: (x['burst_time'], x['arrival_time']))
+        current_process = arrived_processes[0]
+
+        completed_processes.append(current_process)
+
+        index = current_process['id'] - 1
+        waiting_time[index] = max(0, completed_time - current_process['arrival_time'])
+        turnaround_time[index] = waiting_time[index] + current_process['burst_time']
+
+        completed_time += current_process['burst_time']
+        gantt_chart.append(f"P{current_process['id']}")
+
+    avg_waiting_time = sum(waiting_time) / n
+    avg_turnaround_time = sum(turnaround_time) / n
+
+    print("\nShortest Job First (SJF) Scheduling")
+    print(f"{'Process':<10}{'Arrival Time':<15}{'Burst Time':<15}{'Waiting Time':<15}{'Turnaround Time':<15}")
+    for process in processes:
+        index = process['id'] - 1
+        print(f"{process['id']:<10}{process['arrival_time']:<15}{process['burst_time']:<15}{waiting_time[index]:<15}{turnaround_time[index]:<15}")
+
+    print(f"\nAverage Waiting Time: {avg_waiting_time}")
+    print(f"Average Turnaround Time: {avg_turnaround_time}")
+    print("\nGantt Chart:")
+    print(" | ".join(gantt_chart))
+
+
 def shortest_remaining_job_first(processes):
     n = len(processes)
     remaining_times = [proc['burst_time'] for proc in processes]
@@ -60,31 +179,43 @@ def shortest_remaining_job_first(processes):
 
 
 def priority_scheduling(processes):
+    processes = [proc.copy() for proc in processes]
     n = len(processes)
     processes.sort(key=lambda x: (x['arrival_time'], x['priority']))
     waiting_time = [0] * n
     turnaround_time = [0] * n
     gantt_chart = []
     completed_time = 0
+    completed_processes = []
 
-    for i in range(n):
-        process = processes[i]
-        if completed_time < process['arrival_time']:
+    while len(completed_processes) < n:
+        arrived_processes = [p for p in processes if p['arrival_time'] <= completed_time and p not in completed_processes]
+        
+        if not arrived_processes:
             gantt_chart.append("Idle")
-            completed_time = process['arrival_time']
+            completed_time += 1
+            continue
 
-        waiting_time[i] = max(0, completed_time - process['arrival_time'])
-        turnaround_time[i] = waiting_time[i] + process['burst_time']
-        completed_time += process['burst_time']
-        gantt_chart.append(f"P{process['id']}")
+        arrived_processes.sort(key=lambda x: (x['priority'], x['arrival_time']))
+        current_process = arrived_processes[0]
+
+        completed_processes.append(current_process)
+
+        index = current_process['id'] - 1
+        waiting_time[index] = max(0, completed_time - current_process['arrival_time'])
+        turnaround_time[index] = waiting_time[index] + current_process['burst_time']
+
+        completed_time += current_process['burst_time']
+        gantt_chart.append(f"P{current_process['id']}")
 
     avg_waiting_time = sum(waiting_time) / n
     avg_turnaround_time = sum(turnaround_time) / n
 
     print("\nPriority Scheduling")
     print(f"{'Process':<10}{'Arrival Time':<15}{'Burst Time':<15}{'Priority':<10}{'Waiting Time':<15}{'Turnaround Time':<15}")
-    for i, process in enumerate(processes):
-        print(f"{process['id']:<10}{process['arrival_time']:<15}{process['burst_time']:<15}{process['priority']:<10}{waiting_time[i]:<15}{turnaround_time[i]:<15}")
+    for process in processes:
+        index = process['id'] - 1
+        print(f"{process['id']:<10}{process['arrival_time']:<15}{process['burst_time']:<15}{process['priority']:<10}{waiting_time[index]:<15}{turnaround_time[index]:<15}")
 
     print(f"\nAverage Waiting Time: {avg_waiting_time}")
     print(f"Average Turnaround Time: {avg_turnaround_time}")
@@ -141,8 +272,8 @@ def highest_response_ratio_next(processes):
 
 
 def multilevel_queue_feedback(processes):
-    queues = [deque(), deque(), deque()]  # Three levels of queues
-    time_quantum = [4, 8, float('inf')]  # Time quantum for each level
+    queues = [deque(), deque(), deque()]
+    time_quantum = [4, 8, float('inf')] 
     time = 0
     gantt_chart = []
     waiting_time = {proc['id']: 0 for proc in processes}
@@ -200,7 +331,12 @@ def multilevel_queue_feedback(processes):
     print(f"Average Turnaround Time: {avg_turnaround_time}")
     print("\nGantt Chart:")
     print(" | ".join(gantt_chart))
-
+    
+def get_random_time_quantum(processes):
+    average_burst_time = sum(proc['burst_time'] for proc in processes) / len(processes)
+    time_quantum = random.randint(max(1, int(average_burst_time / 3)), int(average_burst_time / 2))
+    print(f"Randomly chosen time quantum for Round Robin: {time_quantum}")
+    return time_quantum
 
 def get_user_input():
     num_processes = int(input("Enter the number of processes: "))
@@ -221,9 +357,9 @@ def get_user_input():
             })
     else:
         for i in range(num_processes):
-            arrival_time = random.randint(0, 10)  # Random arrival time between 0 and 10
-            burst_time = random.randint(1, 10)    # Random burst time between 1 and 10
-            priority = random.randint(1, 5)       # Random priority between 1 and 5 (1 is highest priority)
+            arrival_time = random.randint(0, 10)  
+            burst_time = random.randint(1, 10)   
+            priority = random.randint(1, 5)      
             processes.append({
                 'id': i + 1,
                 'arrival_time': arrival_time,
@@ -239,20 +375,30 @@ def get_user_input():
 
 def main():
     processes = get_user_input()
+    time_quantum = get_random_time_quantum(processes)
     
     print("\n=== Comparing SRJF, Priority, HRRN, and Multilevel Queue with Feedback Scheduling ===")
+    print("_______________________________________________________________________________________")
+    print("\nRunning First Come First Serve (FCFS) Scheduling...")
+    first_come_first_serve(processes[:])
+    print("_______________________________________________________________________________________")
+    print("\nRunning Round Robin (RR) Scheduling...")
+    round_robin(processes[:], time_quantum)
+    print("_______________________________________________________________________________________")
+    print("\nRunning Shortest Job First (SJF) Scheduling...")
+    shortest_job_first(processes[:])
+    print("_______________________________________________________________________________________")
     print("\nRunning SRJF Scheduling...")
     shortest_remaining_job_first(processes[:])
-
+    print("_______________________________________________________________________________________")
     print("\nRunning Priority Scheduling...")
     priority_scheduling(processes[:])
-
+    print("_______________________________________________________________________________________")
     print("\nRunning HRRN Scheduling...")
     highest_response_ratio_next(processes[:])
-
+    print("_______________________________________________________________________________________")
     print("\nRunning Multilevel Queue with Feedback Scheduling...")
     multilevel_queue_feedback(processes[:])
 
 
-# Run the program
 main()
