@@ -41,6 +41,7 @@
     }
     button {
         padding: 10px 15px;
+        margin: 10px;
         background-color: #006aff;
         color: #fff;
         border: none;
@@ -50,6 +51,12 @@
     }
     button:hover {
         background-color: #005ae6;
+    }
+    .button-group{
+        display: flex;
+        justify-content: flex-end;
+        margin: 10px;
+
     }
     .algorithms {
         display: grid;
@@ -101,8 +108,10 @@
         
         <div class="input-section">
             <div class="input-group">
-                <button onclick="toggleInputMode('manual')">Manual Input</button>
-                <button onclick="toggleInputMode('random')">Random Input</button>
+                <div class="button-group">
+                    <button onclick="toggleInputMode('random')">Random Input</button>
+                </div>
+                <h2>Manual Input</h2>
             </div>
             
             <div id="manualInput">
@@ -111,16 +120,20 @@
                     <input type="number" id="arrivalTime" placeholder="Arrival Time" min="0">
                     <input type="number" id="burstTime" placeholder="Burst Time" min="1">
                     <input type="number" id="priority" placeholder="Priority" min="1">
-                    <button onclick="addProcess()">Add Process</button>
+                    <div class="button-group">
+                        <button onclick="addProcess()">Add Process</button>
+                    </div>
                 </div>
             </div>
             
             <div class="input-group">
+                <h3>Select time quantum</h3>
                 <input type="number" id="quantum" placeholder="Time Quantum for RR" value="2" min="1">
             </div>
-            
-            <button onclick="calculateAll()">Calculate All</button>
-            <button onclick="location.reload()">Reset</button>
+            <div class="button-group">
+                <button onclick="calculateAll()">Calculate All</button>
+                <button onclick="location.reload()">Reset</button>
+            </div>
         </div>
 
         <table id="processTable">
