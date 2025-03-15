@@ -1,0 +1,105 @@
+body{
+  background-image: linear-gradient(to right,rgb(94, 94, 247),rgb(238, 50, 50));
+  color: black;
+}
+
+.container{
+  margin: 50px;
+  position:relative;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  padding: 50px;
+}
+h1{
+  padding-bottom: 0px;
+  margin: 0%;
+}
+p{
+  margin: 0px;
+}
+
+h2{
+  margin: 0px;
+}
+.p1{
+  
+  width: 400px;
+  font-size: 20px;
+}
+input{
+  background-color: white;
+}
+
+.icon{
+  width: 60px;
+  margin-bottom: 0px;
+}
+
+button{
+  margin: 10px;
+  padding: 1px 10px;
+  font-size: small;
+  border-radius: 3px;
+  color: black;
+  background: white;
+}
+
+.box-container {
+  display: flex;
+  justify-content: space-around;
+}
+.box-container h1{
+  font-size: 30px;
+  margin: 5px;
+}
+.box-container p{
+  padding-left: 10px;
+}
+
+.box {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.61);
+  border-radius: 15px;
+  width: 300px;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-size: 18px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.box:hover {
+  transform: scale(1.05);
+}
+
+.ironman{
+  width: 400px;
+  border-radius: 5PX;
+  position: absolute;
+}
+
+.ironman:nth-child(1) {
+  top: 50px;
+  left: 700px;
+  z-index: 1;
+}
+
+.ironman:nth-child(2) {
+  top: 80px;
+  left: 1000px;
+  z-index: 2;
+}
+
+.ironman:nth-child(3) {
+  top: 130px;
+  left: 800px;
+  z-index: 3;
+}
+
+.ironman:nth-child(1):hover, .ironman:nth-child(2):hover, .ironman:nth-child(3):hover {
+  transform: scale(1.1);
+  z-index: 100;
+  border: 5px solid rgb(253, 135, 135);
+}
